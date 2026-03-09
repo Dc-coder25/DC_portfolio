@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Avatar professionnel */}
         <div className="flex items-center justify-center">
           <img 
-            src="/Avatar.png" 
+            src="." 
             alt="Portrait professionnel" 
             className="w-64 h-auto object-contain rounded-xl shadow-2xl border-4 border-primary" 
           />
