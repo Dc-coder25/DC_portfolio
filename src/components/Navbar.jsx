@@ -1,49 +1,49 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Navbar() {
-  const [theme, setTheme] = useState("light")
+  const [visible, setVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
-  // Applique le thème au <html>
   useEffect(() => {
-    document.querySelector("html").setAttribute("data-theme", theme)
-  }, [theme])
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // On descend → cacher la nav
+        setVisible(false)
+      } else {
+        // On remonte → montrer la nav
+        setVisible(true)
+      }
+      setLastScrollY(window.scrollY)
+    }
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
-  }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-6">
-      {/* Logo / Branding */}
-      <div className="flex-1">
-        <a href="#hero" className="btn btn-ghost normal-case text-xl font-bold tracking-wide">
-          MonPortfolio
-        </a>
-      </div>
+    <div 
+      className={`fixed top-0 left-0 right-0 flex justify-center z-50 transition-transform duration-500 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="navbar bg-white shadow-md rounded-xl w-[80%] mt-4">
+        <div className="px-4 flex justify-between items-center w-full">
+          {/* Logo */}
+          <div className="flex-1">
+            <p className="normal-case text-xl font-bold tracking-wide">
+              DC-coder25
+            </p>
+          </div>
 
-      {/* Menu principal */}
-      <div className="flex-none hidden md:flex">
-        <ul className="menu menu-horizontal px-1 font-medium">
-          <li><a href="#projects" className="hover:text-primary">Projets</a></li>
-          <li><a href="#about" className="hover:text-primary">À propos</a></li>
-          <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-        </ul>
-      </div>
-
-      {/* Actions */}
-      <div className="flex-none flex items-center gap-4">
-        {/* Toggle Light/Dark */}
-        <label className="swap swap-rotate">
-          {/* Icône soleil */}
-          <input type="checkbox" onChange={toggleTheme} checked={theme === "dark"} />
-          <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M5.64 17.657l-1.414 1.414L4.22 20.07l1.414-1.414zM12 4a8 8 0 100 16 8 8 0 000-16zm0-2a10 10 0 110 20 10 10 0 010-20z"/>
-          </svg>
-          {/* Icône lune */}
-          <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M21.75 15.5A9.75 9.75 0 1112 2.25c.69 0 1.36.07 2 .21a8.25 8.25 0 007.75 13.04z"/>
-          </svg>
-        </label>
+          {/* Menu */}
+          <div className="hidden md:flex">
+            <ul className="menu menu-horizontal px-1 font-medium">
+              <li><a href="#" className="hover:text-primary">Accueil</a></li>
+              <li><a href="#projects" className="hover:text-primary">Projets</a></li>
+              <li><a href="#contact" className="hover:text-primary">Contact</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   )
