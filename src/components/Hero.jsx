@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from 'react';
 
 export default function Hero() {
   const images = ["/img/02.jpg", "/img/03.jpg", "/img/04.jpg"];
