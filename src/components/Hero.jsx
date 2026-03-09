@@ -1,6 +1,18 @@
-import React from 'react'
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const images = ["/img/02.jpg", "/img/03.jpg", "/img/04.jpg"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // change toutes les 3 secondes
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <section 
       className="hero min-h-screen bg-cover bg-center relative pt-35 pb-18" 
@@ -9,12 +21,12 @@ export default function Hero() {
       <div className="w-[80%] mx-auto px-6 h-full flex items-center justify-center">
         <div className="flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left z-10">
           
-          {/* Avatar rond */}
+          {/* Slider Avatar */}
           <div className="flex items-center justify-center">
             <img 
-              src="/img/avatar.jpg" 
+              src={images[currentIndex]} 
               alt="Avatar professionnel" 
-              className="w-88 h-88 object-cover rounded-full shadow-xl border-4 border-primary" 
+              className="w-88 h-88 object-cover rounded-full shadow-xl border-4 border-primary transition-opacity duration-1000 ease-in-out"
             />
           </div>
 
