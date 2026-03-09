@@ -18,7 +18,7 @@ export default function Projects() {
     },
     {
       title: "Stage chez Bienfé",
-      description: "Création et personnalisation de sites WordPress durant mon stage chez Bienfé.",
+      description: "Création et personnalisation de sites avec WordPress et Elementor durant mon stage chez Bienfé.",
       techs: [
         { src: "/icons/wordpress.svg", alt: "WordPress" },
         { src: "/icons/php.svg", alt: "PHP" },
