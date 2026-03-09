@@ -12,7 +12,7 @@ export default function Hero() {
           {/* Avatar rond */}
           <div className="flex items-center justify-center">
             <img 
-              src="/img/Avatar.jpg" 
+              src="/img/avatar.jpg" 
               alt="Avatar professionnel" 
               className="w-88 h-88 object-cover rounded-full shadow-xl border-4 border-primary" 
             />
