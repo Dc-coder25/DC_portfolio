@@ -11,9 +11,9 @@ export default function Projects() {
         { src: "/icons/tailwindcss.svg", alt: "TailwindCSS" },
         { src: "/icons/daisyui.svg", alt: "DaisyUI" }
       ],
-      github: "https://github.com/Dc-coder25/Dc_NotesApp",
-      demo: "https://dcnotes-app.vercel.app/",
-      image: "/img/Dc_Notes-app.png",
+      github: "https://github.com/Dc-coder25/Noteo",
+      demo: "https://noteo-mg.vercel.app/",
+      image: "/img/Noteo.PNG",
       status: "En cours"
     },
     {
